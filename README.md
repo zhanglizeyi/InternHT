@@ -14,8 +14,6 @@
 
 <h2>brew services start/stop/restart postgresql</h2>
 
-
-
 Definition: (different systax of a URL statement)
 
 <h2>1. public static Connection GetConnection(String url) throws SQLException</h2>
@@ -96,5 +94,17 @@ Update in database:
 						has at least attempted to cancel the currently 
 					 	running statement.
 
+
+<h2>Retrieving data</h2>
+	1. We get all authors from authors and print them to the console:
+		pst = con.prepareStatement("select * from db");
+		rs = pst.executeQuery();
+
+	We use the executeQuery method, the method executes the given SQL statement, which returns a single ResultSet obj.
+	The ResultSet is the data table returned by the SQL query.
+
+<h2>Properties</h2>
+
+	
 
 
