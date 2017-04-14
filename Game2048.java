@@ -56,7 +56,7 @@ public class Game2048 extends JPanel {
 		margin
 	*/	
 
-	private static final int tileSize = 64;
+	private static final int tileSize = 86;
 	private static final int tileMargin = 16;
 
 	//generic type of tile, boolean check, int score
@@ -67,13 +67,9 @@ public class Game2048 extends JPanel {
 
 	/* constructor */
 	public Game2048(){
-		setPreferredSize(new Dimension(340, 400));
+		setPreferredSize(new Dimension(500, 500));
 		setFocusable(true);
 		//key adapter
-		keyInit();
-	}
-
-	public void keyInit(){
 		addKeyListener(new KeyAdapter(){
 			@Override
 			public void keyPressed(KeyEvent e){
@@ -82,7 +78,7 @@ public class Game2048 extends JPanel {
 					resetGame();
 				
 				if(!isCanMove())
-					isLose = !isLose;
+					isLose = true;
 		
 				if(!isLose && !isWin){	
 					switch (e.getKeyCode()){
@@ -93,16 +89,16 @@ public class Game2048 extends JPanel {
 							down_key();
 							break;
 						case KeyEvent.VK_LEFT:
-							right_key();
+							left_key();
 							break;
 						case KeyEvent.VK_RIGHT:
-							left_key();
+							right_key();
 							break;
 					}
 				}
 
 				if(!isWin && !isCanMove())
-					isLose = !isLose;
+					isLose = true;
 
 				repaint();
 			}
@@ -130,18 +126,21 @@ public class Game2048 extends JPanel {
 
 	//key 
 	public void up_key(){
+		System.out.println("up");
 		tile = rotate(270);
 		left_key();
 		tile = rotate(90);
 	}
 
 	public void down_key(){
+		System.out.println("down");
 		tile = rotate(90);
 		left_key();
 		tile = rotate(270);
 	}
 
 	public void left_key(){
+		System.out.println("left");
 		boolean needAddTile = false;
 		for(int i=0; i<4; i++){
 			Tile[] tList = getLine(i);
@@ -156,6 +155,7 @@ public class Game2048 extends JPanel {
 	}
 
 	public void right_key(){
+		System.out.println("right");
 		tile = rotate(180);
 		left_key();
 		tile = rotate(180);
@@ -163,6 +163,7 @@ public class Game2048 extends JPanel {
 
 	//tile position
 	private Tile tileAt(int x, int y){
+		System.out.println("tile at position x: "+x+" y: "+ y);
 		return tile[x+y*4];
 	}
 
@@ -181,7 +182,7 @@ public class Game2048 extends JPanel {
 	//check tile move ability
 	public boolean isCanMove(){
 		if(!(availableSpace().size() == 0))
-			return false;
+			return true;
 		
 		for(int x=0; x<4; x++){
 			for(int y=0; y<4; y++){
@@ -309,12 +310,12 @@ public class Game2048 extends JPanel {
 		int offY = y * (tileMargin + tileSize) + tileMargin;
 		g2D.setColor(t.getBackGround());
 		//int x, y, width, heihgt, arcwidth, archeight
-		g2D.fillRoundRect(offX, offY, tileSize, tileSize, 14, 14);
+		g2D.fillRoundRect(offX, offY, tileSize, tileSize, 20, 20);
 		g2D.setColor(t.getForeground());
-		final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
+		final int size = value < 100 ? 24 : value < 1000 ? 24 : 20;
 
 		final Font font = new Font("Arial", Font.BOLD, size);
-    	g.setFont(font);
+    	g2D.setFont(font);
 
     	String s = String.valueOf(value);
     	final FontMetrics fm = getFontMetrics(font);
@@ -322,25 +323,51 @@ public class Game2048 extends JPanel {
     	final int w = fm.stringWidth(s);
     	final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
 
-   		if (value != 0)
-      	g.drawString(s, offX + (tileSize - w) / 2, offY + tileSize - (tileSize - h) / 2 - 2);
+   		if (value != 0){
+   			g2D.drawString(s, offX + (tileSize - w) / 2, offY + tileSize - (tileSize - h) / 2 - 2);
+   		}
 
 		if(isWin || isLose){
 			g2D.setColor(new Color(255, 255, 255, 30));
 			g2D.fillRect(0, 0, this.getWidth(), this.getHeight());
 			g2D.setColor(new Color(78,139,200));
-			
-			if(isWin)
-				g2D.drawString("You Won!", 68, 150);
-			if(isLose){
-				g2D.drawString("Game Over!", 50, 130);
-				g2D.drawString("You Lose!", 64, 200);
-			}
-			if(isWin||isLose)
-				g2D.drawString("Press ESC to play AGAIN!", 80, this.getHeight() - 40);
 
-			g.drawString("Score: " + score, 200, 365);
+			if(isWin){
+				String won = "You Won!";
+				FontMetrics m = getFontMetrics(font);
+				int wid = m.stringWidth(won);
+				int hgt = -(int) fm.getLineMetrics(won, g).getBaselineOffsets()[2];
+				g2D.drawString(won, this.getWidth()/2-wid/2, this.getHeight()/2+hgt);
+			}
+			if(isLose){
+				String game = "Game Over!";
+				String lose = "You Lose!";
+				FontMetrics m = getFontMetrics(font);				
+				int hgt1 = -(int) fm.getLineMetrics(game, g).getBaselineOffsets()[2];
+				int wid1 = m.stringWidth(game);
+				int hgt2 = -(int) fm.getLineMetrics(lose, g).getBaselineOffsets()[2];
+				int wid2 = m.stringWidth(lose);
+				g2D.drawString(game, this.getWidth()/2-wid1/2, this.getHeight()/2-hgt1);
+				g2D.drawString(lose, this.getWidth()/2-wid2/2, this.getHeight()/2-(hgt1+hgt2+5));
+			}
+	
+			if(isWin||isLose){
+				String p = "Press ESC to play AGAIN!";
+				FontMetrics m = getFontMetrics(font);
+				int wid = m.stringWidth(p);
+				int hgt = -(int) fm.getLineMetrics(p, g).getBaselineOffsets()[2];
+				g2D.drawString("Press ESC to play AGAIN!", this.getWidth()/2-wid/2, this.getHeight() - 40);
+			}
+
 		}
+		
+		String str = "Score: ";
+		FontMetrics m = getFontMetrics(font);
+		int wid = m.stringWidth(str);
+		int hgt = -(int) fm.getLineMetrics(str, g).getBaselineOffsets()[2];
+		g2D.setFont(new Font("Arial", Font.PLAIN, 18));
+		g2D.drawString(str + score, this.getWidth()-(wid+40), this.getHeight()-hgt);
+
 	}
 
 	public static void main(String[] args){
@@ -349,7 +376,7 @@ public class Game2048 extends JPanel {
 		JFrame game = new JFrame();
 		game.setTitle("Game 2048");
 		game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		game.setSize(340, 400);
+		game.setSize(500, 500);
 		game.setResizable(false);
 
 		game.add(new Game2048());
