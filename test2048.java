@@ -260,7 +260,7 @@ public class test2048 extends JPanel {
   private void drawTile(Graphics g2, Tile tile, int x, int y) {
     Graphics2D g = ((Graphics2D) g2);
     g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_ANTIALIAS_NORMALIZE);
+    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
     int value = tile.value;
     int xOffset = x * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
     int yOffset = y * (TILES_MARGIN + TILE_SIZE) + TILES_MARGIN;
