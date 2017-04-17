@@ -1,0 +1,20 @@
+/*
+ *Name: Meiyi He
+ *Login: cs11fawq
+ *PID: A91041817
+ *Date: Oct.26.2015
+ *File: README
+ */
+
+Program Description:
+
+This program is a Puzzle game for Pre-schoolers. In order to start the game,
+we should run Puzzle.java. The game start with an empty BoardPiece on the 
+left, and a random ordered PuzzlePieces on the right. User should drag the 
+PuzzlePiece onto it's correct position on the BoardPiece, and then that
+BoardPiece will hide the black highlight but show the green highlight which
+surrounded that piece. The PuzzlePiece cannot be dragged off canvas.
+And when all the pieces are get into the correct positions, the BoardPiece
+will hide all Green Highlight and shown as a whole
+image of UCSD. There will also show "You Win!!!" Message in Green on the 
+canvas. 

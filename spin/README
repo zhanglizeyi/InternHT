@@ -1,0 +1,94 @@
+/*
+ *Name: Meiyi He
+ *Login: cs11fawq
+ *PID: A91041817
+ *Date: Nov.09.2015
+ *File: README
+ *Source Of Help:(website URL)vim editor questions:
+ *http://stackoverflow.com/questions/235839/indent-multiple-
+ *lines-quickly-in-vi
+ */
+
+
+Program Description:
+
+Program1:PalindromeChecker.java
+
+This program is an application that checks the user's input phrase is 
+palindrome or not. By definition, a palindrome is a word, phrase, number
+or other sequence of characters which reads the same backward or forward.
+
+So if user want to check if a phrase is palindrome or not, it should compile
+the Tester.java file by "javac Tester.java" then run the Tester.java by input
+"java Tester" in command line. Then the program will prompt the user to input
+something to be checked.
+
+My PalindromeChecker.java file will first filter out all special characters
+then create a new array with only alphanumeric characters(letters and digits).
+All whitespaces and punctuations will be filtered out, and make the phrase 
+case insensitive by setting all characters to be lower case.
+And there is two method in PalindromeChecker.java to check the input phrase,
+first method needs three parameters, the phrase that user inputs, the first
+character index to be checked and the last character index to be checked.
+The other method only takes in string parameter which is the phrase that user
+inputs in. 
+
+When run the Tester.java, user will be prompted to enter a phrase to check,
+and it will prints out two line of results. 1-arg means check by the method
+that only needs one parameter; 3-arg means check by the method that needs
+three parameters. Their results should be same for the same phrase.
+
+Program2:Spin100
+
+This program includes two files, Spin100Controller.java and Spin100Wheel.java.
+It is actually a small game. To play the game, the user should run the 
+Spin100Controller.java file. Then the game will start. 
+There is a game header called"Spin 100" on top of the game canvas, two lines
+after the header showing the score of player1 and player2. At the begining, 
+all scores should be zero. 
+When click on "Click to Spin P1" button on the canvas, the wheel on the left
+side of the canvas will start to spin. It will spin a random number times 
+based on the random double generated each time, and get a score which the
+arrow points to, then update the player 1's score on the header of the game.
+Notice that if p1's score doesn't exceed 100 or p1 didn't click the finish
+button, p2 are unable to click any of the buttons. If player1 get 100, then
+player 1 will immediately win the game, and the game will display a winning
+message at the upper left corner. 
+If player 1's score larger than 100 or player1 decide to click on "finish
+player 1" to stop his chance of spinning the wheel, the buttons related to
+player 1 will immediately greyed out. And the button for player 2 is able to
+be pressed. Still, Player2 have to spin at least once the wheel to be able
+finish the game.
+For both players, the finish buttons cannot be clicked until the wheel have
+been spinned once. 
+After there comes a winner, the restart button are able to be pressed and the
+scores will back to 0, the wheel reset to the original state points to 50
+again. Any game over messages will be hide until it comes next winner or tie.
+
+
+Vim Questions:
+
+1. First, get into the Command Mode of vim, Then
+1)  :set shiftwidth=1 (which will indent one level, default is 8)
+    press enter on the keyboard
+2) " < "or" > " (< for unindent, > for indent) 
+    nj(n lines to indent or unindent)
+
+2. In command mode
+      >% for indent
+      <% for unindent
+3. o : open a new line following the current line and then insert text
+
+
+Unix Question:
+
+4.For example, if I want to save the "Tester.java" output into a file name
+"output", first compile the file, then in the command line type:
+      java Tester > output
+ Then it will save all outputs of the program into "output" in the current
+ directory.
+
+
+Java Questions:
+5. int[] numbers = {1,3,5,7,9};
+

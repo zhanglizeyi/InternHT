@@ -1,0 +1,75 @@
+/*
+ *Name: Meiyi He
+ *Login: cs11fawq
+ *PID:A91041817
+ *Date:Nov.19.2015
+ *File Name: README
+ *This file is a program description and some questions in write up
+ */
+
+Program Description:
+This is a simplified version of snake game. The goal of the game is to make 
+the snake cover the entire screen. 
+User have to run this game by entering"java -cp/Acme.jar:./objectdraw.jar:./  
+SnakeController [dimensions] [segment_size] [delay]" into the terminal. The 
+dimensions should between 500 and 800 inclusively, segment size should 
+between 20 and 400 inclusively, and delay should between 100 to 1000 
+inclusively. If any of it is incorrect or user didn't pass in correct amount
+or arguments, the program will exit a.s.a.p. and the error message will shown 
+according to different mistakes.
+After all parameters that user entered in the terminal is correct, the game 
+should start. The snake would not move until the user pressed on any of the
+direction key on the keyboard. Also notice that the snake always start facing
+right, one size from the upper bound and the left bound of the canvas.
+When user pressed on any of the direction key to start the game, the snake
+will keep moving in the current direction until user change the direction by
+press on other direction keys. If user press on the space bar on the keybpard,
+the game will paused and show "PAUSED" in the center of the canvas. The game
+will resume only when user press the space bar again, other keys will not
+resume the game.
+The snake can grow when the snake eats the apple (the red square) on the 
+canvas, and then grow by one segment on the original apple's coordinate. Then
+the apple will generates randomly on the canvas, anywhere other except the 
+coordinates of the snake body. 
+The snake will keep moving and eating, but when the snake crash on the wall
+or the snake eats itself(when head touch on any of the body), then the game
+is over and the "GAME OVER" message will appear on the center of the screen.
+The score of the game will keep updating whenever the snake eats an apple, and
+after the game over, compare the current score with high score, then update
+the high score if current score higher then previous high score.
+After the game is over, or even the snake is moving, or user paused the game,
+user can always restart the game by pressing the button "NEW GAME"which is on
+the bottom of the canvas.
+
+
+Short Responses:
+1.starts early and starts often will make me never gets into this kind of
+scenarios. But still, if I really stressed out or have too much pressured, 
+I will go work out.
+
+Java Questions:
+2. I think it would be better if there is two method that control the square
+drawing and circle. And then creates a method that takes in color parameter
+to set the square and the circle's color accordingly. This way the program 
+will be more general and more easy to updates.
+
+3. Differences:
+Abstract class:
+  1) extends an abstract class means inheriting them, means that the program
+  will have many properties same as the class they inherited from
+  2) a class can extends only one class
+Interface:
+  1) An interface is not a class, it is just a type that can be used by any
+  class which implementing the class.
+  2) a class can implements many interfaces
+
+4. Alike:
+  1) both of them cannot be instantiated themselves
+  2) both can contain static final constants
+
+5. vim -p *.java 
+this will open all file with .java type, and each in its' own tab
+
+6. mkdir -p fooDir/barDir/
+
+
