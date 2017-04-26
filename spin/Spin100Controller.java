@@ -1,11 +1,4 @@
-/*
- *Name: Meiyi He
- *Login: cs11fawq
- *PID: A91041817
- *Date: Nov.09.2015
- *File Name: Spin100Controller.java
- *This file defines a controller that handle click events for spinwheel
- */
+
 
 import objectdraw.*;
 import java.awt.*;

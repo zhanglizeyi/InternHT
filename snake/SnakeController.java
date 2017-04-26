@@ -1,11 +1,4 @@
-/*
- *Name: Meiyi He
- *Login: cs11fawq
- *PID: A91041817
- *Date: Nov.13.2015
- *File Name: SnakeController.java
- *This file defines a controller that handle keyboardEvents of SnakeGame
- */
+
 import objectdraw.*;
 import java.awt.*;
 import java.util.*;

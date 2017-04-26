@@ -1,11 +1,4 @@
-/*
- *Name: Meiyi He
- *Login: cs11fawq
- *PID: A91041817
- *Date: Nov.09.2015
- *File Name: Spin100Wheel.java
- *This file defines a class Spin100Wheel that have special features
- */
+
 import objectdraw.*;
 import java.awt.*;
 import java.lang.Math;

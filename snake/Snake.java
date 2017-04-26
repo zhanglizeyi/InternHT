@@ -1,11 +1,4 @@
-/*
- *Name: Meiyi He
- *Login: cs11fawq
- *PID: A91041817
- *Date: Nov.13.2015
- *File Name: Snake.java
- *This file defines a class Snake that have special features
- */
+
 import objectdraw.*;
 import java.awt.*;
 import java.util.*;
