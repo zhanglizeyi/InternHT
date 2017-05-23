@@ -7,6 +7,20 @@
 	<li>How to use the max of Spring container</li>
 	<li>How to use Spring AOP, and more fundamental about AOP</li>
 </ul>
+
+<h2>Chapter 1: Spring Core</h2>
+<li>First is dependency injection, DI</li>
+<li>Second is aspect-oriented programming, AOP</li>
+
+
+
+
+
+
+
+
+
+
 <h2>Portion 2: Use Spring to construct Web app</h2>
 <ul>
 	<li>Spring MVC, Web fundamental</li>
@@ -24,6 +38,13 @@
 </ul>
 <ul>
 <h2>Portion 4: Spring</h2>
+	<li>15 includes RMI, Hessian, Burlap and SOAP</li>
+	<li>16 Spring MVC, create RESTful service </li>
+	<li>17 Spring asynchronism message supporting</li>
+	<li>18 </li>
+	<li>19 </li>
+	<li>20 </li>
+	<li>21 </li>
 </ul>
 
 

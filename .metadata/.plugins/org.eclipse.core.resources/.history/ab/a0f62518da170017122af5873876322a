@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class Spider {
+	
+	private static final int MAX_PAGES_TO_SEARCH = 10;
+	private Set<String> pagesVisited = new HashSet<>();
+	//set contains unique entries and no duplicates
+	//all pages visited will be unique
+	private List<String> pagesToVist = new LinkedList<>();
+	//all the collect all the URLs on that page and add them to end of list
+
+	private String nextUrl(){
+		String nextUrl;
+		do{
+			nextUrl = this.pagesToVist.remove(0);	
+		}while(this.pagesToVist.contains(nextUrl));
+		
+		this.pagesVisited.add(nextUrl);
+		
+		return nextUrl;
+	}
+	
+	
+	public void search(String url, String serachWord){
+		while(this.pagesVisited.size() < MAX_PAGES_TO_SEARCH){
+			
+			String currentUrl;
+			SpiderLeg leg = new SpiderLeg();
+			
+			if(this.pagesToVist.isEmpty()){
+				currentUrl = url;
+				this.pagesVisited.add(url);
+			}else{
+				currentUrl = this.nextUrl();
+			}
+			leg.crawl(currentUrl); //Lots of stuff happening here.
+			
+			boolean success = leg.serachForWord("AI");
+			
+			if(success){
+				System.out.println(String.format("**Success** Word %s found at %s", searchWord, currentUrl));
+				break;
+			}
+			this.pagesToVist.addAll(leg.getLinks());
+			
+		}
+	}
+	
+	
+	public static void main(String[] args){
+		
+	}
+	
+}

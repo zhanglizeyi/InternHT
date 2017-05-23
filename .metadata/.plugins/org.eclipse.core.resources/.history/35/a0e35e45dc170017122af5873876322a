@@ -1,0 +1,7 @@
+import java.util.*;
+
+public class SpiderLeg {
+	
+	private List<String> links = new LinkedList<String>();
+	
+}
