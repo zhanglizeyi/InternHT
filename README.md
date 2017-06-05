@@ -1,6 +1,5 @@
 # InternHT
 
-
 <h1>Spring Framework</h1>
 <h3>Spring framework has layer construction with 7 modules</h3>
 <li>Spring AOP: source-level, metadata, AOP infrastructure</li>
@@ -22,7 +21,6 @@ AOP 的功能完全集成到了 Spring 事务管理、日志和其他各种特�
 
 <h1>IOC 容器</h1>
 <p>Spring 设计的核心是 org.springframework.beans 包， 它的设计目标是与 JavaBean 组件一起使用。这个包通常不是由用户直接使用，而是由服务器将其用作其他多数功能的底层中介。下一个最高级抽象是 BeanFactory 接口，它是工厂设计模式的实现，允许通过名称创建和检索对象。BeanFactory 也可以管理对象之间的关系</p>
-<tr>
 	
 	<h3>BeanFactory支持两个对象模型</h3>
 	<p>单态 模型提供了具有特定名称的对象的共享实例，可以在查询时对其进行检索。Singleton 是默认的也是最常用的对象模型。对于无状态服务对象很理想<p>
@@ -41,7 +39,6 @@ AOP 的功能完全集成到了 Spring 事务管理、日志和其他各种特�
 		<li>每个 bean 的定义都可以是 POJO （用类名和 JavaBean 初始化属性定义） 或 FactoryBean。FactoryBean 接口为使用 Spring 框架构建的应用程序添加了一个间接的级别</li>
 
 	</ol>
-</tr>
 
 <h1>Postgres COMMAND LINE:</h1>
 	createdb “database name”
