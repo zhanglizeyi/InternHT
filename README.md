@@ -1,5 +1,17 @@
 # InternHT
 
+
+<h1>Spring Framework</h1>
+<h3>Spring framework has layer construction with 7 modules</h3>
+<li>Spring AOP: source-level, metadata, AOP infrastructure</li>
+<li>Spring ORM: Hibernate support, Ibats support, JDO support</li>
+<li>Spring Web: WebApplicationContext, Mutipart resolver, Web utilties</li>
+<li>Spring Context: Application context, UI support, Validation, JNDL EJB support and remodeling Mail</li>
+<li>Spring Web MVC: Web MVC, Framework, Web Views, JSP/Velocity, PDF/Export</li>
+<li>Spring Core: Supporting utilties, Bean container</li>
+
+
+
 <h1>Postgres COMMAND LINE:</h1>
 	createdb “database name”
 	psql “database”
