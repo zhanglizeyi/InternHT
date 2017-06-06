@@ -40,6 +40,76 @@ AOP 的功能完全集成到了 Spring 事务管理、日志和其他各种特�
 
 	</ol>
 
+<h1>IOC 示例</h1>
+<p>理解控制反转最简单的方式就是看它的实际应用。在对由三部分组成的 Spring 系列 的第 1 部分进行总结时，我使用了一个示例，演示了如何通过 Spring IOC 容器注入应用程序的依赖关系
+
+我用开启在线账户的用例作为起点，对于该实现，开启信用账户要求用户与以下服务交流</p>
+<ol>
+	<li>信用级别评定服务，查询用户的信用历史信息</li>
+	<li>远程信息链接服务，插入客户信息，将客户信息与信用卡和银行信息连接起来</li>
+	<li>电子服务，向用户发送有关信用卡状态的电子邮件</li>
+</ol>
+
+<h1>三个接口</h1>
+<p>对于这个示例，我假设服务已存在，理想的情况是用松散耦合的方式把它们集成在一起。一下清单显示了三个服务的应用程序接口。</p>
+
+<ol>
+	<li>3. CreditRatingInterface</li>
+	<p>public interface CreditRatingInterface{
+			public boolean getUserCreditHistoryInformation(ICustomer iCustomer);
+	}
+		 信用级别评定接口提供了信用历史信息。 它需要一个包含客户的信息的Customer对象。该接口的实现是由CreditRating类提供的。
+	</p>
+	<li>4. CreditLinkingInterface</li>
+	<p>
+		public interface CreditLinkingInterface{
+			public String getUrl(){
+				public void setUrl(string url);
+				public void linkCreditBankAccount() throws Exception;
+			}
+		}
+
+		信用连接接口信用历史信息与银行信息连接在一起，并插入用户的信用卡信息。信用连接接口是一个远程服务，它的查询是通过getUrl() 方法进行的。 URL由Spring框架的bean配置机制设置。该接口的实现是由CreditLinking类提供的。
+	</p>
+
+	<li>5. EmailInterface</li>
+	<p>
+		public interface EmailInterface{
+			public void sendEmail(Icustomer iCustomer);
+			public String getFormEmail();
+			public void setFormEmail(String fromEmail);
+			public String getPassword();
+			public void setPassword(String password);
+			public String getSmtpHost();
+			public void setSmtpHost(String smtpHost);
+			public String getUserId();
+			public void setUserId(String userId);
+		}
+
+		EmailInterface 负责向客户发送于客户信用卡状态的电子邮件。 邮件配置参数（例如SMPT主机，用户名，口令）由前面提到的bean配置机制设置。 Email类提供了该接口的实现。
+
+		打开命令提示符，将当前目录切换到 SpringProject，在命令提示符中输入以下命令：build
+	</p>
+
+	<li>8. 装入 Spring 配置文件</li>
+	<p>
+		ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {
+						"springexample-creditaccount.xml" 
+					});
+		CreateCreditCardAccountInterface creditCardAccount = 
+							(CreateCreditCardAccountInterface)
+		appContext.getBean("createCreditCard");
+	</p>
+
+</ol>
+
+<h1>运行应用程序</h1>
+<p>
+	要运行示例应用程序，首先必须下载Spring框架及其所有依赖文件。接下来，将框架释放到dir/ 
+接下来，将源代码释放到文件夹，例如 c:\ 盘，然后创建 SpringProject。将 Spring 库（即 C:\spring-framework-1.2-rc2\dist 下的 spring.jar 和 C:\spring-framework-1.2-rc2\lib\jakarta-commons 下的 commons-logging.jar）复制到 SpringProject\lib 文件夹中。完成这些工作之后，就有了必需的构建依赖关系集
+</p>
+
+
 <h1>Postgres COMMAND LINE:</h1>
 	createdb “database name”
 	psql “database”
